@@ -3,6 +3,7 @@
 Spring Boot Admin provides a simple admin interface for Spring Boot applications.
 
 Features:
+
 * Show name/id and version number
 * Show health status
 * Show metrics
