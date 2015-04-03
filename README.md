@@ -11,6 +11,8 @@ Features:
 * View Threaddump
 * View Traces
 
+For more info see: https://github.com/codecentric/spring-boot-admin
+
 # How to build
 
 ```
