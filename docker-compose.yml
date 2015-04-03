@@ -1,0 +1,31 @@
+consul:
+  command: -server -bootstrap -advertise 192.168.99.100
+  image: progrium/consul:latest
+  hostname: 192.168.99.100.xip.io
+  ports:
+  - "8300:8300"
+  - "8400:8400"
+  - "8500:8500"
+  - "8600:53/udp"
+
+registrator:
+  command: consul://consul:8500
+  image: progrium/registrator:latest
+  links:
+  - consul
+  volumes:
+  - "/var/run/docker.sock:/tmp/docker.sock"
+
+springbootadmin:
+  build: spring-boot-admin/.
+  ports:
+    - "18080:8080"
+  environment:
+    CONSUL_HOST: 192.168.99.100
+
+helloworld:
+  build: spring-boot-helloworld-sample/.
+  ports:
+    - "8080"
+#  environment:
+#    SERVICE_TAG: management

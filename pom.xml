@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nl.enovation.spring.boot</groupId>
+	<artifactId>spring-boot-admin-parent</artifactId>
+	<version>1.0.0.BUILD-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Spring Boot Admin Parent</name>
+	<description>Spring Boot Admin Parent</description>
+	<url>https://git.enovation.nl/projects/DEV/repos/spring-boot-admin</url>
+	<organization>
+		<name>ENOVATION</name>
+		<url>http://www.enovation.nl</url>
+	</organization>
+	<issueManagement>
+		<system>Jira</system>
+		<url>https://jira.enovation.nl</url>
+	</issueManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://ci2.enovation.dev/job/development/job/spring-boot-admin/</url>
+	</ciManagement>	
+	<scm>
+        <url>https://git.enovation.nl/projects/DEV/repos/spring-boot-admin</url>
+        <connection>scm:git:ssh://git@git.enovation.nl:7999/dev/spring-boot-admin.git</connection>
+        <developerConnection>scm:git:ssh://git@git.enovation.nl:7999/dev/spring-boot-admin.git</developerConnection>
+	  	<tag>HEAD</tag>
+  	</scm>
+	<developers>
+		<developer>
+			<id>albertvth</id>
+			<name>Albert van 't Hart</name>
+			<email>albert.vanthart@enovation.nl</email>
+			<organization>ENOVATION</organization>
+			<organizationUrl>http://www.enovation.nl</organizationUrl>
+			<roles>
+				<role>Project lead</role>
+			</roles>
+		</developer>
+	</developers>
+	<prerequisites>
+		<maven>3.0.0</maven>
+	</prerequisites>
+	<properties>
+		<java.version>1.7</java.version>
+ 		<spring-boot.version>1.2.3.RELEASE</spring-boot.version>
+	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+ 				<plugin>
+          			<groupId>org.apache.maven.plugins</groupId>
+          			<artifactId>maven-compiler-plugin</artifactId>
+          			<version>3.2</version>
+        			<configuration>
+          				<source>${java.version}</source>
+          				<target>${java.version}</target>
+        			</configuration>
+               	</plugin>
+				<plugin>
+  					<groupId>org.apache.maven.plugins</groupId>
+  					<artifactId>maven-release-plugin</artifactId>
+  					<version>2.5.1</version>
+  					<configuration>
+     					<tagNameFormat>@{project.version}</tagNameFormat>
+  					</configuration>
+				</plugin>               	
+				<plugin>
+					<groupId>pl.project13.maven</groupId>
+					<artifactId>git-commit-id-plugin</artifactId>
+					<version>2.1.7</version>
+				</plugin>               					
+			</plugins>
+		</pluginManagement>
+	</build>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>spring-boot-admin</module>
+				<module>spring-boot-helloworld-sample</module>
+			</modules>
+		</profile>
+	</profiles>
+	<distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>Internal Release Repository</name>
+            <url>http://nexus.enovation.dev/nexus/content/repositories/inhouse</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>Internal Snapshot Repository</name>
+            <url>http://nexus.enovation.dev/nexus/content/repositories/inhouse.snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+	<dependencyManagement>
+    	<dependencies>
+        	<dependency>
+            	<!-- Import dependency management from Spring Boot -->
+            	<groupId>org.springframework.boot</groupId>
+            	<artifactId>spring-boot-dependencies</artifactId>
+            	<version>${spring-boot.version}</version>
+            	<type>pom</type>
+            	<scope>import</scope>
+        	</dependency>
+    	</dependencies>
+	</dependencyManagement>    
+</project>
