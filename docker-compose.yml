@@ -7,9 +7,12 @@ consul:
   - "8400:8400"
   - "8500:8500"
   - "8600:53/udp"
+  # environment:
+  #   SERVICE_CHECK_SCRIPT: nc $SERVICE_IP $SERVICE_PORT | grep OK
+  #   SERVICE_CHECK_TTL: 5s
 
 registrator:
-  command: consul://consul:8500
+  command: consul://consul:8500 -resync 5 -ttl-refresh 5
   image: progrium/registrator:latest
   links:
   - consul
@@ -27,5 +30,5 @@ helloworld:
   build: spring-boot-helloworld-sample/.
   ports:
     - "8080"
-#  environment:
-#    SERVICE_TAG: management
+  environment:
+    SERVICE_TAGS: spring-boot-management
