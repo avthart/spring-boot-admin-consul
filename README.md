@@ -20,9 +20,15 @@ For more info see: https://github.com/codecentric/spring-boot-admin
 $ mvn package
 ```
 
-# How to run locally
+# How to run
 
-You need Docker and Docker Compose to run the Spring Boot Admin and the sample project in Docker containers.
+```
+$ docker run -p 8080 -e CONSUL_HOST=192.168.99.100 depot.enovation.nl/platform/spring-boot-admin
+```
+
+# How to run locally with all dependencies
+
+You need Docker Compose to run Consul, Registrator, Spring Boot Admin and the Spring Boot sample project.
 
 ```
 $ docker-compose up
