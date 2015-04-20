@@ -20,7 +20,7 @@ registrator:
   - "/var/run/docker.sock:/tmp/docker.sock"
 
 springbootadmin:
-  build: spring-boot-admin/.
+  image: depot.enovation.nl/platform/spring-boot-admin:latest
   ports:
     - "18080:8080"
   environment:

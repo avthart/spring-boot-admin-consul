@@ -63,6 +63,51 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.jolokia</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.11.2</version>	
+				<configuration>
+					<images>
+						<image>
+							<alias>${project.artifactId}</alias>
+							<name>depot.enovation.nl/platform/${project.artifactId}</name>
+							<build>
+								<from>java:8</from>
+								<tags>
+							    	<tag>latest</tag>
+							    	<tag>${project.version}</tag>
+								</tags>
+				              	<!-- TODO JAVA_OPTS -->
+       					      	<command>java -jar /app/${project.artifactId}.jar</command>
+           						<ports>
+									<port>8080</port>
+								</ports>
+								<assembly>
+									<basedir>/app</basedir>
+									<descriptor>${basedir}/src/main/docker/assembly.xml</descriptor>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>	
+					</execution>
+	                <execution>
+	                	<id>push</id>
+	                	<phase>deploy</phase>
+                		<goals>
+	                  		<goal>push</goal>
+	                	</goals>
+	              	</execution>
+	            </executions>
+			</plugin>			
 		</plugins>
 	</build>
 	
