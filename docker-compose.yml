@@ -20,9 +20,10 @@ registrator:
   - "/var/run/docker.sock:/tmp/docker.sock"
 
 springbootadmin:
-  image: depot.enovation.nl/platform/spring-boot-admin:latest
+  image: depot.enovation.nl/wharf/spring-boot-admin:latest
   ports:
     - "18080:8080"
+    - "8081"
   environment:
     CONSUL_HOST: 192.168.99.100
     DISCOVERY_ENABLED: true
@@ -31,5 +32,6 @@ helloworld:
   build: spring-boot-helloworld-sample/.
   ports:
     - "8080"
+    - "8081"
   environment:
     SERVICE_TAGS: spring-boot-management
