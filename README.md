@@ -52,5 +52,4 @@ $ docker-compose scale helloworld=3
 
 # Todo
 
-* Test multiple instances in Spring Boot Admin?
 * Filter services by tag: https://github.com/spring-cloud/spring-cloud-consul/issues/18 and https://github.com/spring-cloud/spring-cloud-commons/issues/19 
