@@ -27,6 +27,7 @@ springbootadmin:
   environment:
     CONSUL_HOST: 192.168.99.100
     DISCOVERY_ENABLED: true
+  command: java -Djava.security.egd=file:/dev/./urandom -jar /app/spring-boot-admin.jar
 
 helloworld:
   build: spring-boot-helloworld-sample/.
@@ -35,3 +36,4 @@ helloworld:
     - "8081"
   environment:
     SERVICE_TAGS: spring-boot-management
+  command: java -Djava.security.egd=file:/dev/./urandom -jar /app/application.jar
