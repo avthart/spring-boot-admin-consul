@@ -24,7 +24,8 @@ springbootadmin:
   ports:
     - "18080:8080"
   environment:
-    SPRING_CLOUD_CONSUL_HOST: 192.168.99.100
+    CONSUL_HOST: 192.168.99.100
+    DISCOVERY_ENABLED: true
 
 helloworld:
   build: spring-boot-helloworld-sample/.
