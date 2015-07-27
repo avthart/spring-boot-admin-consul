@@ -23,7 +23,13 @@ $ mvn package
 # How to run
 
 ```
-$ docker run -p 8080 -e CONSUL_HOST=192.168.99.100 depot.enovation.nl/platform/spring-boot-admin
+$ docker run -P depot.enovation.nl/wharf/spring-boot-admin
+```
+
+With consul as discovery registry:
+
+```
+$ docker run -P -e DISCOVERY_ENABLED=true -e CONSUL_HOST=192.168.99.100 depot.enovation.nl/wharf/spring-boot-admin
 ```
 
 # How to run locally with all dependencies
