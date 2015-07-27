@@ -10,8 +10,6 @@ import de.codecentric.boot.admin.config.EnableAdminServer;
 
 @SpringBootApplication
 @EnableAdminServer
-@EnableDiscoveryClient
-@Import(ConsulDiscoveryClientConfiguration.class)
 public class SpringBootAdminApplication {
 
     public static void main(String[] args) {
