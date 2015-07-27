@@ -43,7 +43,7 @@
 	</prerequisites>
 	<properties>
 		<java.version>1.8</java.version>
- 		<spring-boot.version>1.2.3.RELEASE</spring-boot.version>
+ 		<spring-boot.version>1.2.5.RELEASE</spring-boot.version>
 	</properties>
 	<build>
 		<pluginManagement>
